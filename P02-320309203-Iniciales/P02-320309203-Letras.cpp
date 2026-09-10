@@ -1,4 +1,4 @@
-//Práctica 2: índices, mesh, proyecciones, transformaciones geométricas
+//PrÃ¡ctica 2: Ã­ndices, mesh, proyecciones, transformaciones geomÃ©tricas
 #include <stdio.h>
 #include <string.h>
 #include<cmath>
@@ -10,7 +10,7 @@
 #include<gtc\matrix_transform.hpp>
 //DATOS QUE NOSOTROS DECLAREMOS SE MANDA A LOS UNIFORM
 #include<gtc\type_ptr.hpp>
-//clases para dar orden y limpieza al código
+//clases para dar orden y limpieza al cÃ³digo
 #include"Mesh.h"
 #include"Shader.h"
 #include"Window.h"
@@ -25,15 +25,15 @@ static const char* vShader = "shaders/shader.vert";
 static const char* fShader = "shaders/shader.frag";
 static const char* vShaderColor = "shaders/shadercolor.vert";
 static const char* fShaderColor = "shaders/shadercolor.frag";
-//shaders nuevos se crearían acá
+//shaders nuevos se crearÃ­an acÃ¡
 
 float angulo = 0.0f;
 
-//color café/marrón en RGB : 0.478, 0.255, 0.067
+//color cafÃ©/marrÃ³n en RGB : 0.478, 0.255, 0.067
 
 using std::vector;
 
-//Pirámide triangular regular
+//PirÃ¡mide triangular regular
 void CreaPiramide()
 {
 	unsigned int indices[] = { 
@@ -55,7 +55,7 @@ void CreaPiramide()
 	meshList.push_back(piramidetriangular);
 }
 
-//función para crear pirámide cuadrangular unitaria
+//funciÃ³n para crear pirÃ¡mide cuadrangular unitaria
 void CrearPiramideCuadrangular()
 {
 	unsigned int piramidecuadrangular_indices[] = {
@@ -79,7 +79,7 @@ void CrearPiramideCuadrangular()
 	meshList.push_back(piramide);
 }
 
-//Vértices de un cubo
+//VÃ©rtices de un cubo
 void CrearCubo()
 {
 	unsigned int cubo_indices[] = {
@@ -338,7 +338,7 @@ void CrearIniciales()
 void CreateShaders()
 {
 
-	Shader *shader1 = new Shader(); //shader para usar índices: objetos: cubo y  pirámide
+	Shader *shader1 = new Shader(); //shader para usar Ã­ndices: objetos: cubo y  pirÃ¡mide
 	shader1->CreateFromFiles(vShader, fShader);
 	shaderList.push_back(*shader1);
 
@@ -352,19 +352,19 @@ int main()
 {
 	mainWindow = Window(800, 800);
 	mainWindow.Initialise();
-	CreaPiramide(); //índice 0 en MeshList
-	CrearCubo();//índice 1 en MeshList
-	CrearPiramideCuadrangular(); //índice 2 en MeshList
-	CrearLetrasyFiguras(); //usa MeshColor, índices en MeshColorList
+	CreaPiramide(); //Ã­ndice 0 en MeshList
+	CrearCubo();//Ã­ndice 1 en MeshList
+	CrearPiramideCuadrangular(); //Ã­ndice 2 en MeshList
+	CrearLetrasyFiguras(); //usa MeshColor, Ã­ndices en MeshColorList
 	CrearIniciales();
 	CreateShaders();
 	GLuint uniformProjection = 0;
 	GLuint uniformModel = 0;
-	//Projection: Matriz de Dimensión 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
+	//Projection: Matriz de DimensiÃ³n 4x4 para indicar si vemos en 2D( orthogonal) o en 3D) perspectiva
 	glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
 	//glm::mat4 projection = glm::perspective(glm::radians(60.0f)	,mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
 	
-	//Model: Matriz de Dimensión 4x4 en la cual se almacena la multiplicación de las transformaciones geométricas.
+	//Model: Matriz de DimensiÃ³n 4x4 en la cual se almacena la multiplicaciÃ³n de las transformaciones geomÃ©tricas.
 	glm::mat4 model(1.0); //fuera del while se usa para inicializar la matriz con una identidad
 	
 	//Loop mientras no se cierra la ventana
@@ -416,9 +416,9 @@ int main()
 }
 // inicializar matriz: glm::mat4 model(1.0);
 // reestablecer matriz: model = glm::mat4(1.0);
-//Traslación
+//TraslaciÃ³n
 //model = glm::translate(model, glm::vec3(0.0f, 0.0f, -5.0f));
-//////////////// ROTACIÓN //////////////////
+//////////////// ROTACIÃ“N //////////////////
 //model = glm::rotate(model, 45 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 ////////////////  ESCALA ////////////////
 //model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
